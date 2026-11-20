@@ -1,0 +1,91 @@
+.exm-coin-detail > header { min-height: 76px; }
+.exm-coin-detail > header h1 { font-size: 1.125rem; font-weight: 600; }
+.exm-coin-detail-info { border-radius: var(--radius-btn); color: var(--label-2); }
+.exm-coin-detail-info:hover { background: var(--fill); color: var(--label); }
+.exm-coin-detail .wallet-transfer-detail-hero { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 20px 24px; border: 1px solid var(--separator); border-radius: var(--radius-card); background: var(--blue-light); }
+.exm-coin-detail .wallet-transfer-detail-copy { min-width: 0; flex: 1 1 0; }
+.exm-coin-detail .wallet-transfer-detail-copy > p:first-child { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; color: var(--label-2); font-size: .8125rem; line-height: 1.4; }
+.exm-coin-detail-balance { max-width: 100%; padding-top: 10px; color: var(--label); font-size: 2.5rem; line-height: 1.16; font-weight: 650; letter-spacing: -.04em; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.exm-coin-detail-unavailable { display: block; font-size: 1.25rem; line-height: 1.5; font-weight: 400; letter-spacing: 0; }
+.exm-coin-detail-equivalent { padding-top: 6px; color: var(--label-2); font-size: .8125rem; line-height: 1.5; }
+.exm-coin-detail .wallet-transfer-detail-coin { display: block; flex: 0 0 44px; padding-top: 0; }
+.exm-coin-detail .wallet-transfer-detail-coin > svg { width: 44px; height: 44px; }
+.exm-coin-detail .exm-coin-detail-actions { display: flex; flex-wrap: nowrap; gap: 10px; padding: 16px 0 24px; }
+.exm-coin-detail .exm-coin-detail-actions .wallet-action { min-width: 0; min-height: 48px; flex: 1 1 0; flex-direction: row; gap: 5px; padding: 8px 4px; border: 1px solid var(--separator); border-radius: var(--radius-btn); background: var(--grouped); }
+.exm-coin-detail .exm-coin-detail-actions .wallet-action:hover { background: var(--fill); }
+.exm-coin-detail .exm-coin-detail-actions .wallet-action-disc { width: 24px; height: 30px; flex: 0 0 24px; border: 0; border-radius: 0; background: transparent; color: var(--blue); }
+.exm-coin-detail .exm-coin-detail-actions .wallet-action > .t-label2 { color: var(--label); font-size: .875rem; line-height: 1.2; font-weight: 500; }
+.exm-coin-detail-send-icon { transform: rotate(45deg); }
+.exm-coin-detail-swap-icon { transform: rotate(90deg); }
+.exm-coin-detail-section-heading { display: flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 12px; }
+.exm-coin-detail-section-heading > h2 { color: var(--label); font-size: 1rem; line-height: 1.3; font-weight: 600; }
+.exm-coin-detail-section-heading > button { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; color: var(--label-2); font-size: .875rem; }
+.exm-coin-detail-records, .exm-coin-detail-holding { min-width: 0; }
+.exm-coin-detail-activity > button { padding-inline: 0; border-radius: 0; }
+.exm-coin-detail-activity > button + button { border-top: 1px solid var(--separator); }
+.exm-coin-detail-activity .t-label1 { font-weight: 400; }
+.exm-coin-detail-activity > p { padding-inline: 0; }
+.exm-coin-detail-activity [aria-busy="true"] > div { padding-inline: 0; }
+.exm-coin-detail-readonly { margin-bottom: 20px; padding: 12px; border: 1px solid var(--separator); border-radius: 12px; color: var(--label-2); line-height: 1.5; }
+.exm-coin-detail-explorer { display: flex; min-height: 48px; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; border-radius: 12px; background: var(--fill); color: var(--label); font-size: .875rem; text-align: center; }
+.exm-coin-detail-networks > .card { border: 0; border-radius: 0; background: transparent; }
+.exm-coin-detail-networks .wallet-coin-network-row { padding-inline: 0; border-radius: 0; }
+.exm-coin-detail-networks .wallet-coin-network-row + .wallet-coin-network-row { border-top: 1px solid var(--separator); }
+.exm-coin-detail-networks .wallet-coin-network-name, .exm-coin-detail-networks .wallet-coin-network-amount { font-weight: 400; }
+.wallet .exm-coin-detail-facts > .card { border: 0; border-radius: 0; background: transparent; }
+.exm-coin-detail-facts .card > div, .exm-coin-detail-facts .card > button { padding-inline: 0; }
+.exm-coin-detail-facts .card > * + *::before { left: 0; }
+.exm-coin-detail-facts .t-label2 { font-weight: 400; }
+
+.wallet-activity-row { width: 100%; padding: 9px 12px; text-align: start; container: wallet-activity / inline-size; }
+.wallet-activity-grid { display: grid; min-height: 42px; grid-template-columns: 36px minmax(0, 1fr) fit-content(50%); align-items: center; gap: 10px; }
+.wallet-activity-icon { position: relative; display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--fill); color: var(--label-2); }
+.wallet-activity-icon[data-failed] { color: var(--red); }
+.wallet-activity-network { position: absolute; right: -2px; bottom: -1px; display: grid; width: 14px; height: 14px; place-items: center; border-radius: 50%; box-shadow: 0 0 0 2px var(--grouped); }
+.wallet-activity-copy, .wallet-activity-values { display: flex; min-width: 0; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+.wallet-activity-copy > .t-label1, .wallet-activity-amount { font-size: .875rem; font-weight: 580; line-height: 1.4; }
+.wallet-activity-values { text-align: end; font-variant-numeric: tabular-nums; }
+.wallet-activity-amount[data-incoming] { color: var(--green); }
+.wallet-activity-meta { color: var(--label-2); font-size: .75rem; line-height: 1.4; }
+.wallet-activity-meta:empty { display: none; }
+@container wallet-activity (max-width: 16em) {
+  .wallet-activity-grid { grid-template-columns: 36px minmax(0, 1fr); gap: 3px 10px; }
+  .wallet-activity-icon { align-self: start; }
+  .wallet-activity-values { grid-column: 2; text-align: start; }
+}
+
+.exm-activity-receipt { display: flex; flex-direction: column; gap: 20px; padding-bottom: 8px; }
+.exm-activity-receipt-heading { display: flex; min-height: 44px; align-items: center; gap: 12px; }
+.exm-activity-status-icon { display: grid; width: 44px; height: 44px; flex: 0 0 44px; place-items: center; border-radius: 50%; background: var(--fill); color: var(--label); }
+.exm-activity-status-icon[data-status="confirmed"] { color: var(--green); background: color-mix(in srgb, var(--green) 12%, var(--bg)); }
+.exm-activity-status-icon[data-status="failed"] { color: var(--red); background: color-mix(in srgb, var(--red) 12%, var(--bg)); }
+.exm-activity-status-icon[data-status="pending"] { color: var(--orange); }
+.exm-activity-title { color: var(--label); font-size: 1rem; line-height: 1.3; }
+.exm-activity-status-label { margin-top: 3px; color: var(--label-2); font-size: .8125rem; line-height: 1.4; }
+.exm-activity-coin { margin-left: auto; flex: 0 0 36px; }
+.exm-activity-amount { color: var(--label); font-size: 2.5rem; line-height: 1.2; letter-spacing: -.035em; font-weight: 600; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.exm-activity-receipt .card { border: 0; border-radius: 20px; background: var(--grouped); }
+.exm-activity-receipt .card > div:not(.exm-activity-field) { min-height: 48px; padding-block: 10px; }
+.exm-activity-receipt .card .t-label2 { font-weight: 400; }
+.exm-activity-field { padding: 10px 16px 14px; }
+.exm-activity-field-heading { display: flex; min-height: 24px; align-items: center; justify-content: space-between; gap: 12px; }
+.exm-activity-field-heading > p { color: var(--label-2); font-size: .8125rem; }
+.exm-activity-field-heading > button { width: 44px; height: 44px; margin-block: -10px; margin-right: -10px; color: var(--label-2); }
+.exm-activity-field > .mono { padding-top: 5px; color: var(--label); font-size: .75rem; line-height: 1.6; overflow-wrap: anywhere; }
+
+@container (max-width: 17em) {
+  .exm-coin-detail .wallet-transfer-detail-hero { flex-wrap: wrap; }
+  .exm-coin-detail .wallet-transfer-detail-coin { order: -1; flex-basis: 100%; padding-top: 0; }
+  .exm-coin-detail .exm-coin-detail-actions { flex-direction: column; gap: 8px; }
+  .exm-coin-detail .exm-coin-detail-actions .wallet-action { width: 100%; min-height: 56px; flex: none; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 8px 12px; background: var(--fill); text-align: left; }
+  .exm-coin-detail .exm-coin-detail-actions .wallet-action-disc { width: 44px; height: 44px; flex: 0 0 44px; border: 0; border-radius: 0; background: transparent; }
+  .exm-coin-detail .exm-coin-detail-actions .wallet-action > .t-label2 { min-width: 0; flex: 1; }
+}
+
+
+@media (min-width: 840px) and (pointer: fine), (min-width: 840px) and (min-height: 560px) {
+  .wallet-shell .wallet-workspace .exm-coin-detail { max-width: none; }
+  .exm-coin-detail-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .exm-coin-detail > header { margin-bottom: 24px; border-bottom: 1px solid var(--separator); }
+  .exm-coin-detail-records .exm-coin-detail-section-heading { border-bottom: 1px solid var(--separator); }
+}

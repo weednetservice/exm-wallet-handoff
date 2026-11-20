@@ -1,0 +1,36 @@
+# Ethereum swap execution: 19 November 2026
+
+The production entry is `SwapScreen` → `MainnetSwapScreen`. There is no testnet implementation or environment selector in this import path. Its asset picker contains ETH, USDC and DAI on Ethereum only. Other mainnet balances do not imply swap execution support. Old testnet preferences are ignored; unsupported Base/USDT drafts lose their amount instead of silently becoming an Ethereum trade.
+
+`MAINNET_SWAP_SIGNING_ENABLED` remains `false` in production. Read-only quotes and allowance reads are separate from that write gate. The supported execution paths are ETH→USDC, USDC→ETH, ETH→DAI and DAI→ETH. There is no bridge, stablecoin-to-stablecoin route, USDT executor or executor on another chain.
+
+## Rechecked today
+
+| Evidence | Result and limit |
+| --- | --- |
+| `scripts/mainnet-swap-firewall-smoke.ts` | Closed production functions reject before RPC or signature. |
+| `scripts/mainnet-app-writepath-fork-smoke.mjs` | Actual EXM functions through `createApp` completed all four directions on verified loopback Anvil. Six regular writes and one lost response, exact approvals, checked minimum output, and zero writes when hash storage failed. Only the throwaway bundle enabled signing. |
+| `scripts/mainnet-swap-budget-smoke.ts` | Full reviewed gas × fee cap plus value is reserved. Fresh gas above the reviewed limit, insufficient ETH and invalid bounds reject. |
+| `scripts/mainnet-swap-budget-fork.mjs` | Actual approval and swap functions rejected insufficient reviewed gas. An unaffordable full fee cap and an unfunded sender also rejected, before preparation, nonce request or broadcast. All app RPCs were redirected to verified loopback Anvil. |
+| `scripts/mainnet-deployment-identity-smoke.mjs` | 76 constructor/mock checks passed; all eight canonical pools passed read-only on a separate Anvil fork at block 26445018. Expected whole-runtime hashes derive from pinned official creation artifacts and constructor execution, not RPC snapshots or manual immutable offsets. |
+| `scripts/mainnet-swap-oracle-smoke.ts` | Four directions, stale/malformed feeds, wrong chain, depeg and exact policy boundaries. Four small read-only quotes also passed the oracle guard against live Ethereum. |
+| `scripts/mainnet-swap-signed-smoke.ts` | Exact locally signed EIP-1559 payloads accepted. Ten unintended changes rejected before RPC. |
+| `scripts/ui-mainnet-swap-recovery-fork.mjs` | Actual browser screen, backend and local Anvil lost-response flow passed Chromium and WebKit. Both verified persistence before the node received bytes, a single write, stale sibling confirmation removed, reload with the same hash and success after verifying the exact receipt. |
+
+The concrete write-path defect fixed today was a simulation without the reviewed gas bound: a successful `eth_call` could be followed by a transaction using an outdated, insufficient gas limit. Both approval and swap now obtain a fresh gas estimate, compare it with the reviewed limit, and recheck the ETH budget before signing. They never enlarge the reviewed limit automatically. State can still change after the last read; these bounds do not promise execution success.
+
+The mainnet clients use the same-origin backend transport in browsers and the original endpoint outside browsers. Pending native/ERC20 transfers block a new Ethereum swap inside the existing owner Web Lock, before the durable swap claim and before RPC/signing.
+
+## Existing evidence, not a fresh production release check
+
+`research/15-current-security-audit.md` and `research/16-sushi-executor-validation.md` record the replacement of remote LI.FI/Sushi calldata with locally reconstructed Uniswap V3 calls. They also record local deadline/reorg checks, Chromium lost-response/reload/two-tab recovery, exact official Uniswap runtime artifacts and eight pool immutables at block 26432007, and small-quote orientation against independent Chainlink feeds. Those historical checks should not be described as runtime controls or as tests of the new backend and transfer journal.
+
+## Execution controls
+
+1. **Route identity gate is implemented.** Approval and execution now check the complete official-artifact-derived runtime of Router02/QuoterV2/Factory and the selected pool, immutable relationships, CREATE2 address, factory pool mapping, tokens, fee and tick spacing at one fresh block before signature preparation. No success cache is used; mismatch/read error aborts. Only the selected pool is read per operation. [Artifact provenance, reproducible commands and scope limits](deployment-artifacts/README.md) record the 76 mock/constructor checks and eight-pool canonical fork result. This closes the runtime deployment-identity gap; it does not authenticate a dishonest RPC or establish a fair price.
+2. **Independent price check.** Before approval or swap, read ETH/USD and the selected stablecoin/USD Chainlink feed at the same recent Ethereum block. The block age limit is 120 s with 30 s of local clock skew. Chainlink directory heartbeats are 3,600 s for ETH and DAI and 82,800 s for USDC. The policy allows each feed's heartbeat plus 120 s. The offer must be within 3% of the feed ratio, and its minimum output must be at least 96.5% of that ratio. Comparison uses integer arithmetic and actual token decimals. Missing data, wrong chain or invalid round timestamp halts signing. The USDC interval limits how quickly this check detects a depeg. Source independence is from the pool, inside the same RPC trust boundary. [Feed directory](https://reference-data-directory.vercel.app/feeds-mainnet.json). [Chainlink API](https://docs.chain.link/data-feeds/api-reference). [Feed selection and stablecoins](https://docs.chain.link/data-feeds/selecting-data-feeds#stablecoin-specific-considerations).
+3. **Signed hash checkpoint and receipt.** The signer validates sender, chain, calldata, value, gas and fee caps, then writes the hash of the signed bytes to that owner's journal before passing them to the node. A returned hash must match. A missing response preserves the record, and another tab cannot reuse its old review. For token output the receipt must contain the expected `Transfer`; for ETH output a successful exact receipt must contain a WETH `Withdrawal` from Router02 for at least the reviewed minimum. Router02 transfers that amount to the recipient in the signed unwrap call. Unrelated ending-block balance changes do not affect the result. [Uniswap payment contract](https://github.com/Uniswap/v3-periphery/blob/697c2474757ea89fec12a4e6db16a574fe259610/contracts/base/PeripheryPayments.sol). [WETH9](https://github.com/gnosis/canonical-weth/blob/master/contracts/WETH9.sol). [Ethereum receipt fields](https://ethereum.org/developers/docs/apis/json-rpc/#eth_gettransactionreceipt).
+
+## Release blockers
+
+An operation with a saved hash and no receipt can still block new swaps indefinitely if its bytes never reached the network or the transaction was dropped or replaced. Automatic recovery needs verifiable evidence about the original nonce and transaction before it clears a record. A mined receipt shows inclusion and delivery at that block. Reorg handling, account changes during signing, swap/revoke/transfer contention in the combined path, and native iPhone behavior still need release verification. No real funds or user keys were used.

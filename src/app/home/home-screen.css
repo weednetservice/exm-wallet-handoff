@@ -1,0 +1,280 @@
+.exm-home {
+  --home-line: var(--exm-line, var(--separator));
+  --home-art: var(--exm-art, var(--blue));
+}
+.exm-home-header { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; min-height: 68px; align-items: center; gap: 8px; padding-block: 8px; }
+.exm-home-account-area { display: flex; align-items: center; min-width: 0; }
+.exm-home-account { display: flex; min-width: 0; max-width: 100%; min-height: 48px; align-items: center; gap: 8px; border-radius: var(--radius-btn); text-align: left; }
+.exm-home-account:hover { background: var(--highlight); }
+.exm-home-avatar { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border-radius: 50%; }
+.exm-home-account-copy { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.exm-home-account-name { display: flex; align-items: center; gap: 6px; color: var(--label); font-size: .875rem; line-height: 1.3; font-weight: 600; }
+.exm-home-account-name > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.exm-home-account[data-readonly] .exm-home-account-name > span { white-space: normal; overflow-wrap: anywhere; }
+.exm-home-account-name > svg { flex: 0 0 auto; }
+.exm-home-account-address { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--label-2); font-size: .75rem; line-height: 1.3; }
+.exm-home .exm-home-copy-address { flex: 0 0 44px; width: 44px; height: 44px; color: var(--label-2); border-radius: 10px; }
+.exm-home .exm-home-copy-address:hover { background: var(--fill); }
+.exm-home-utilities { display: flex; flex: 0 0 auto; align-items: center; gap: 4px; }
+.exm-home-utility { flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid var(--home-line); border-radius: var(--radius-btn); background: var(--grouped); }
+.exm-home-utility:hover { background: var(--fill); }
+.exm-home .exm-home-settings { display: none; }
+
+.exm-home-dashboard { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.exm-home-asset-column, .exm-home-inventory, .exm-home-contacts, .exm-home-aside { min-width: 0; }
+.exm-home-asset-column { display: grid; align-content: start; gap: 16px; }
+.exm-home-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  min-width: 0;
+  padding: 4px 0 6px;
+}
+.exm-home .wallet-home-balance { display: flex; align-items: flex-start; flex-direction: column; padding: 0; text-align: left; margin: 0; min-block-size: 110px; }
+.exm-home-balance-heading { display: flex; min-height: 44px; align-items: center; gap: 2px; color: var(--label-2); font-size: .875rem; line-height: 1.35; font-weight: 500; }
+.exm-home-balance-heading > span { min-width: 0; overflow-wrap: anywhere; }
+.exm-home .exm-home-privacy { flex: 0 0 44px; width: 44px; height: 44px; color: var(--label-2); }
+.exm-home .wallet-home-total { position: relative; width: 100%; max-width: 100%; margin-top: 2px; color: var(--label); font-size: clamp(2.15rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -.045em; font-weight: 630; white-space: normal; font-variant-numeric: tabular-nums; }
+.exm-home .wallet-home-total[data-unavailable="true"] { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.035em; }
+.exm-home-balance-figure, .exm-home-balance-natural { display: flex; align-items: baseline; gap: .2em; letter-spacing: -.05em; }
+.exm-home-balance-number, .exm-home-balance-unit { white-space: nowrap; overflow-wrap: normal; }
+.exm-home-balance-unit { color: var(--label-2); font-size: .65em; font-weight: 450; }
+.exm-home-balance-measure { position: absolute; inset: 0 0 auto; height: 0; overflow: hidden; visibility: hidden; pointer-events: none; }
+.exm-home-balance-measure > .exm-home-balance-natural { display: inline-flex; width: max-content; }
+.exm-home .wallet-home-total .skeleton { display: block; width: 160px; height: 1.1em; background: var(--fill); }
+.exm-home-balance-unavailable { display: block; overflow-wrap: anywhere; }
+.exm-home-balance-detail { max-width: 100%; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; margin-top: 4px; color: var(--label-2); font-size: .8125rem; line-height: 1.45; }
+.exm-home-balance-detail[data-reserved] { min-block-size: calc(1lh + 8px); }
+@container (max-width: 17rem) {
+  .exm-home-balance-detail[data-reserved] { min-block-size: calc(2lh + 14px); }
+}
+.exm-home-retry { display: inline-flex; align-items: center; min-height: 44px; color: var(--blue); text-align: start; font-weight: 550; }
+.exm-home-retry:hover { text-decoration: underline; text-underline-offset: 3px; }
+.exm-home-change { display: inline-flex; min-width: 0; max-width: 100%; overflow-wrap: anywhere; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding-block: 4px; }
+.exm-home-change > span:last-child { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.exm-home-change-badge { display: inline-flex; align-items: center; gap: 3px; color: var(--green); font-weight: 600; }
+.exm-home-change-badge[data-negative="true"] { color: var(--red); }
+.exm-add-wallet-options { display: grid; gap: 2px; padding-block: 2px 8px; }
+.exm-add-wallet-option {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 18px;
+  gap: 12px;
+  align-items: center;
+  min-block-size: 66px;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  color: var(--label);
+  text-align: start;
+  overflow-wrap: anywhere;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.exm-add-wallet-option + .exm-add-wallet-option { border-block-start-color: var(--separator); }
+.exm-add-wallet-option > svg:first-child { color: var(--blue); }
+.exm-add-wallet-option > svg:last-child { color: var(--label-2); }
+.exm-add-wallet-option :is(strong, small) { display: block; }
+.exm-add-wallet-option strong { font-size: 1rem; font-weight: 630; line-height: 1.25; }
+.exm-add-wallet-option small { margin-top: 3px; color: var(--label-2); font-size: .8125rem; line-height: 1.4; }
+.exm-add-wallet-option:is(:hover, :focus-visible) { background: var(--grouped); border-color: var(--separator); }
+.exm-home .wallet-home-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+.exm-home .wallet-home-actions[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.exm-home .wallet-home-actions[data-count="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.exm-home .wallet-home-actions .wallet-action { width: 100%; min-width: 0; min-height: 48px; justify-content: center; gap: 6px; padding: 7px 5px; border: 1px solid var(--separator); border-radius: var(--radius-btn); background: var(--grouped); color: var(--label); }
+.exm-home .wallet-home-actions .wallet-action:hover { background: var(--fill); }
+.exm-home .wallet-home-actions .wallet-action:active { background: var(--fill-press); }
+.exm-home .wallet-home-actions .wallet-action[data-primary] { background: var(--blue-fill); border-color: var(--blue-fill); color: white; }
+.exm-home .wallet-home-actions .wallet-action[data-primary]:hover { background: var(--blue-fill-hover); }
+.exm-home .wallet-home-actions .wallet-action[data-primary]:active { background: var(--blue-fill-press); }
+.exm-home .wallet-home-actions .wallet-action-disc { width: auto; height: auto; background: transparent; color: inherit; }
+.exm-home .wallet-home-actions .wallet-action-disc svg { width: 19px; height: 19px; }
+.exm-home .wallet-home-actions .wallet-action > .t-label2 { color: inherit; font-size: .8rem; line-height: 1.25; font-weight: 560; overflow-wrap: anywhere; }
+.exm-home-send-icon { transform: rotate(45deg); }
+.exm-home-swap-icon { transform: rotate(90deg); }
+
+.exm-home-contacts-heading { display: flex; min-height: 36px; align-items: center; justify-content: space-between; gap: 12px; }
+.exm-home-book-link { display: grid; width: 44px; height: 44px; margin-right: -7px; place-items: center; border-radius: 50%; color: var(--label-2); }
+.exm-home-contact-list { display: flex; justify-content: flex-start; gap: 10px; padding: 3px 4px 5px; margin: 0 -4px -5px; overflow-x: auto; }
+.exm-home-contact { position: relative; display: flex; flex: 0 0 65px; min-width: 0; align-items: center; flex-direction: column; border-radius: 16px; }
+.exm-home .exm-home-contact:focus-visible { outline: none; }
+.exm-home .exm-home-contact:focus-visible > :first-child { outline: 2px solid var(--blue); outline-offset: 3px; }
+.exm-home-contact:hover > :first-child { opacity: .8; }
+.exm-home-contact:active > :first-child { opacity: .6; }
+.exm-home-contact-avatar { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: transparent; border: 1px solid var(--home-line); font-size: 1rem; line-height: 1; color: var(--label); }
+.exm-home-contact-name { max-width: 60px; margin-top: 7px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--label-2); font-size: .75rem; line-height: 1.4; }
+.exm-home-section-heading { display: flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 2px; }
+.exm-home-section-heading > h2, .exm-allocation > h2, .exm-home-contacts h2 { color: var(--label); font: 680 1.18rem/1.25 var(--font); letter-spacing: -.035em; overflow-wrap: anywhere; }
+.exm-home-see-all { display: flex; align-items: center; gap: 6px; min-height: 44px; padding-inline: 4px; color: var(--blue); font-size: .8125rem; font-weight: 500; }
+.exm-home .exm-home-assets { margin-top: 0; background: transparent; border: 0; border-radius: 0; }
+.exm-home-empty { display: flex; align-items: center; flex-direction: column; gap: 12px; padding: 16px 0 24px; color: var(--home-art); }
+.exm-home-empty > p { max-width: 32ch; color: var(--label-2); font-size: .875rem; line-height: 1.5; text-align: center; }
+.exm-home-unverified-toggle { padding-inline: 0; font-weight: 400; }
+.exm-home-asset-status { padding: 8px 0; color: var(--label-2); font-size: .75rem; line-height: 1.4; }
+.exm-home .exm-home-asset-row { min-height: 64px; grid-template-columns: 36px minmax(0, 1fr) fit-content(52%); align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--home-line); }
+.exm-home-asset-columns, .exm-home-asset-network { display: none; }
+.exm-home .exm-home-asset-row .wallet-asset-row-symbol { color: var(--label); font-size: 1rem; line-height: 1.4; font-weight: 500; }
+.exm-home .exm-home-asset-row .wallet-asset-row-detail { margin-top: 3px; color: var(--label-2); font-size: .75rem; line-height: 1.35; }
+.exm-home-asset-value { max-width: 100%; font-size: .9375rem; line-height: 1.4; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.exm-home-fiat-tail { display: inline-block; }
+.exm-home-asset-value[data-muted="true"] { color: var(--label-2); font-size: .75rem; font-weight: 450; }
+.exm-home .exm-home-price-line { margin-top: 3px; font-size: .75rem; line-height: 1.35; }
+.exm-home-asset-row:hover { background: var(--highlight); }
+.exm-home-activity-empty { padding: 28px 12px; text-align: center; }
+.exm-home-activity-empty p + p { margin-top: 6px; }
+.exm-home-activity-more { display: flex; align-items: center; justify-content: center; min-height: 48px; width: 100%; gap: 6px; color: var(--label); font-size: .875rem; }
+.exm-home-account:active, .exm-home-see-all:active, .exm-home-book-link:active { background: var(--fill-press); }
+.exm-home-aside { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 16px; }
+.exm-home-inventory, .exm-allocation, .exm-home-contacts, .exm-home-recent { border-top: 1px solid var(--home-line); padding-top: 8px; }
+.exm-home-recent .exm-home-activity-empty { padding: 15px 0; text-align: start; }
+.exm-home-activity .wallet-activity-row { display: block; padding-inline: 0; border-top: 1px solid var(--home-line); }
+.exm-home-recent .wallet-activity-row { min-height: 64px; }
+.exm-home-activity .wallet-activity-row:hover { background: var(--highlight); }
+.wallet-sheet .exm-home-activity .wallet-activity-row:first-child { border-top: 0; }
+.exm-home-activity-more:hover, .exm-home-see-all:hover { text-decoration: underline; text-underline-offset: 3px; }
+.exm-allocation { padding-top: 14px; }
+.exm-allocation-bar { display: flex; overflow: hidden; height: 6px; margin-block: 13px 5px; border-radius: 4px; }
+.exm-allocation-bar span { flex-basis: 0; min-width: 0; }
+.exm-allocation-list button { display: grid; grid-template-columns: 8px minmax(0, 1fr) auto; align-items: center; gap: 10px; width: 100%; min-height: 44px; border-bottom: 1px solid var(--home-line); color: var(--label); font-size: .8125rem; text-align: start; overflow-wrap: anywhere; }
+.exm-allocation-list li:last-child button { border-bottom: 0; }
+.exm-allocation-list button:hover { background: var(--highlight); }
+.exm-allocation-list button:active { background: var(--fill-press); }
+.exm-allocation-list button > span:last-child { color: var(--label-2); font-variant-numeric: tabular-nums; }
+.exm-allocation-key { width: 8px; height: 8px; border-radius: 2px; }
+
+@media (min-width: 840px) and (pointer: fine), (min-width: 840px) and (min-height: 560px) {
+  .exm-home-header { grid-template-columns: minmax(0, 1fr) auto auto auto; min-height: 52px; gap: 12px; padding-block: 0; }
+  .exm-home .exm-home-settings { display: inline-grid; }
+  .exm-home-account-area { max-width: 18rem; }
+  .exm-home-utilities { gap: 8px; padding-inline-start: 12px; border-inline-start: 1px solid var(--home-line); }
+  .exm-home-dashboard { gap: 16px; }
+  .exm-home-overview { padding: 12px 20px 16px; border: 1px solid var(--home-line); border-radius: var(--radius-card); background: var(--grouped); }
+  .exm-home .wallet-home-actions { width: fit-content; max-width: 100%; }
+  .exm-home .wallet-home-actions .wallet-action { flex-direction: row; gap: 7px; }
+  .exm-home .wallet-home-actions .wallet-action { padding-inline: clamp(10px, 1.2vw, 18px); }
+}
+
+@media (min-width: 1024px) {
+  .exm-home-dashboard {
+    --home-asset-columns: 36px minmax(0, 1fr) minmax(85px, .62fr) minmax(132px, .8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(312px, .57fr);
+    grid-template-areas: "header header" "overview overview" "inventory aside";
+    align-items: start;
+    gap: 16px;
+  }
+  .exm-home-header { grid-area: header; }
+  .exm-home-overview { grid-area: overview; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding-inline: 16px; }
+  .exm-home .wallet-home-balance { min-block-size: 126px; }
+  .exm-home .wallet-home-actions { margin-top: 0; }
+  .exm-home-asset-column { grid-area: inventory; }
+  .exm-home-aside { grid-area: aside; }
+  .exm-home-inventory, .exm-home-contacts, .exm-home-aside > section { padding: 8px 16px 4px; border: 1px solid var(--home-line); border-radius: var(--radius-card); background: var(--grouped); }
+  .exm-home-aside > .exm-allocation { padding-top: 16px; }
+  .exm-home-dashboard:not(:has(.exm-home-aside)) .exm-home-asset-column { grid-column: 1 / -1; }
+  .exm-home .exm-home-asset-row { grid-template-columns: var(--home-asset-columns); }
+  .exm-home-asset-columns { display: grid; grid-template-columns: var(--home-asset-columns); gap: 10px; padding-block: 8px; color: var(--label-2); border-top: 1px solid var(--home-line); font-size: .75rem; }
+  .exm-home-asset-columns > :first-child { grid-column: 1 / 3; }
+  .exm-home-asset-columns > :last-child { text-align: end; }
+  .exm-home-asset-network { display: block; color: var(--label-2); font-size: .8125rem; overflow-wrap: anywhere; }
+  .exm-home-asset-mobile-network { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+
+@media (min-width: 1024px) {
+  @container (max-width: 48em) {
+    .exm-home-dashboard { grid-template-columns: minmax(0, 1fr); grid-template-areas: "header" "overview" "inventory" "aside"; }
+    .exm-home-overview { grid-template-columns: minmax(0, 1fr); }
+    .exm-home .wallet-home-actions { margin-top: 4px; }
+    .exm-home-asset-columns, .exm-home-asset-network { display: none; }
+    .exm-home-asset-mobile-network { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+    .exm-home .exm-home-asset-row { grid-template-columns: 36px minmax(0, 1fr) fit-content(52%); }
+  }
+}
+
+@container (max-width: 19em) {
+  .exm-home .wallet-home-actions, .exm-home .wallet-home-actions[data-count="3"] { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .exm-home .wallet-home-actions[data-count="3"] > :last-child { grid-column: 1 / -1; }
+  .exm-home-section-heading { flex-wrap: wrap; }
+  .exm-home-contact { flex-basis: max(50px, 5em); font-size: .75rem; }
+  .exm-home-contact-name { max-width: 5em; }
+}
+@container (max-width: 16.5em) {
+  .exm-home .exm-home-asset-row { grid-template-columns: 36px minmax(0, 1fr); }
+  .exm-home .exm-home-asset-row .wallet-asset-row-values { grid-column: 2; align-items: flex-start; text-align: left; }
+}
+@container (max-width: 18em) {
+  .exm-home-account:not([data-readonly]) .exm-home-account-name > span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: normal;
+  }
+  .exm-home-header:has(.exm-home-account[data-readonly]) { grid-template-areas: "scan account account" "utilities utilities utilities"; gap: 4px 8px; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-scan { grid-area: scan; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-account-area { grid-area: account; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-utilities { grid-area: utilities; justify-self: end; }
+}
+@container (max-width: 15em) {
+  .exm-home-header { grid-template-areas: "scan . utilities" "account account account"; gap: 4px 12px; }
+  .exm-home-scan { grid-area: scan; }
+  .exm-home-account-area { grid-area: account; }
+  .exm-home-account-name > span { display: block; overflow: visible; white-space: normal; overflow-wrap: anywhere; }
+  .exm-home-utilities { grid-area: utilities; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) { grid-template-areas: "scan account account" ". copy utilities"; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-account-area { display: contents; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-account { grid-area: account; justify-self: start; }
+  .exm-home-header:has(.exm-home-account[data-readonly]) .exm-home-copy-address { grid-area: copy; justify-self: end; }
+}
+@container (max-width: 11em) {
+  .exm-home .wallet-home-actions[data-count] { grid-template-columns: minmax(0, 1fr); }
+  .exm-home .wallet-home-actions .wallet-action { flex-direction: row; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .exm-home .wallet-home-actions .wallet-action { transition: none; }
+}
+.exm-home-asset-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: end; gap: 0 10px; }
+.exm-home-catalog { display: grid; gap: 4px; padding-top: 12px; margin-top: 8px; border-top: 1px solid var(--home-line); }
+.exm-home-catalog .card.list { border: 0; border-radius: 0; background: transparent; }
+.exm-home-catalog .wallet-discovered-token { padding-inline: 0; }
+.exm-home .wallet-asset-row-symbol { display: flex; align-items: baseline; gap: 6px; }
+.exm-home .wallet-asset-row-symbol > svg { flex: none; color: var(--blue); }
+.exm-home-pin-options .list > button { display: flex; width: 100%; min-height: 60px; align-items: center; gap: 12px; padding: 9px 12px; text-align: start; }
+.exm-home-pin-options .list > button > svg { flex: none; color: var(--label-2); }
+.exm-home-pin-options .list > button[aria-pressed="true"] > svg { color: var(--blue); }
+.exm-home-pin-options .list > button:hover { background: var(--fill); }
+.exm-home-pin-name { display: grid; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.exm-home-pin-name > small { color: var(--label-2); font-size: .75rem; }
+@container (max-width: 19em) {
+  .exm-home-asset-tools { justify-content: start; }
+}
+
+.wallet-discovered-token {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) fit-content(52%);
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 64px;
+  padding: 9px 16px;
+  text-align: start;
+}
+
+.wallet-discovered-value {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: end;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.wallet-discovered-token .t-body2 { font-size: .75rem; }
+.wallet-discovered-value > .t-label1 { font-size: .9375rem; font-weight: 600; }
+
+@container (max-width: 19em) {
+  .wallet-discovered-token { grid-template-columns: 36px minmax(0, 1fr); }
+  .wallet-discovered-value { grid-column: 2; align-items: flex-start; text-align: start; }
+}

@@ -1,0 +1,16 @@
+.exm-scene-art {
+  position: relative;
+  display: block;
+  flex: none;
+  max-width: 100%;
+  margin-inline: auto;
+  background: transparent;
+}
+
+.exm-scene-art__image {
+  position: absolute;
+  inset: 5%;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+}

@@ -1,0 +1,24 @@
+@media (prefers-reduced-motion: no-preference) {
+  .price-chart-trace:not([data-scrubbed]) {
+    --price-trace-duration: 390ms;
+    animation: price-trace-reveal var(--price-trace-duration) cubic-bezier(.22, .64, .28, 1);
+  }
+
+  .price-chart-trace:not([data-scrubbed]) .price-chart-area {
+    animation: price-trace-fill var(--price-trace-duration) ease-out;
+  }
+
+  @media (min-width: 840px) and (pointer: fine) {
+    .price-chart-trace:not([data-scrubbed]) { --price-trace-duration: 480ms; }
+  }
+}
+
+@keyframes price-trace-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes price-trace-fill {
+  from { opacity: .2; }
+  to { opacity: 1; }
+}

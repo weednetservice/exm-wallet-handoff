@@ -1,0 +1,10 @@
+.exm-person-avatar {
+  display: inline-block;
+  flex: none;
+  overflow: hidden;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+  background-color: var(--fill, #ededf0);
+  vertical-align: middle;
+}

@@ -1,0 +1,12 @@
+Component: Depth Chart (depth-chart)
+Author: Arihant jain (21st.dev @arihantcodes_1f7b8c4d)
+Component page: https://21st.dev/@arihantcodes_1f7b8c4d/components/depth-chart
+Source listed on the page: https://ui.spectrumhq.in/r/depth-chart.json
+
+License: No public license on 21st.dev (no-license).
+Used with the author's permission, reported by the project owner on 2026-11-14.
+Keep the written permission next to this file (e.g. depth-chart.permission.png).
+
+Source in src/components/ui/depth-chart.tsx was restored from the public
+21st.dev preview bundle: names, types and comments are ours, behaviour,
+numbers and CSS unchanged.

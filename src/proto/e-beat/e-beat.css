@@ -1,0 +1,54 @@
+/* Direction E «Такт сети»: only what the app's wallet.css does not have. Tokens come from .wallet. */
+
+.eb { --ease: cubic-bezier(.22, 1, .36, 1); --tick: #556170; }
+
+/* prototype navigation: not part of the product, so it does not look like it (dashed, small, off the palette of controls) */
+.eb-nav { border-bottom: 1px dashed rgba(194, 218, 255, .2); background: #0b1017; }
+.eb-nav button { color: var(--label-2); border-radius: 8px; transition: color .15s, background-color .15s; }
+.eb-nav button:hover { color: var(--label); background: var(--grouped); }
+.eb-nav button[aria-current="page"] { color: var(--label); background: var(--grouped); }
+
+/* the big balance: cents and the sign quiet (26/48 500, #8994A3: 5.9:1 on the page) */
+.eb-cents { font-size: 26px; font-weight: 500; color: var(--label-2); letter-spacing: 0; }
+
+/* ---- the beat strip ---- */
+.eb-strip { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%); mask-image: linear-gradient(to right, transparent 0, #000 30%); }
+.eb-strip-card { position: relative; height: 44px; }
+.eb-strip-row { position: absolute; right: 0; bottom: 0; height: 8px; pointer-events: none; }
+.eb-track { position: absolute; inset: 0; will-change: transform; }
+.eb-tick { position: absolute; bottom: 0; width: 2px; height: 20px; border-radius: 1px 1px 0 0; background: var(--tick); }
+.eb-strip-row .eb-tick { height: 6px; }
+.eb-tick.eb-post { background: #e3e8ee; }
+.eb-tick.eb-hit { background: var(--green); height: 40px; width: 3px; margin-right: -.5px; animation: eb-hit .32s var(--ease) backwards; }
+@keyframes eb-hit { from { transform: scaleY(.5); background: #fff; } }
+.eb-strip-row .eb-tick.eb-hit { height: 8px; }
+/* a block that has just arrived lands white and settles; ticks that were there when the strip appeared do not flash */
+.eb-tick.eb-new:not(.eb-hit) { animation: eb-land .6s var(--ease) backwards; }
+@keyframes eb-land { from { background: #fff; transform: scaleY(1.5); } }
+.eb-tick { transform-origin: bottom; }
+/* the moment of sending: a blue dot between the last block before and the first block after */
+.eb-sent { position: absolute; bottom: 7px; width: 6px; height: 6px; margin-right: -2px; border-radius: 50%; background: var(--blue); }
+.eb-strip-row .eb-sent { bottom: 1px; width: 4px; height: 4px; margin-right: -1px; }
+/* the place of the block the operation waits for */
+.eb-slot { position: absolute; right: 0; bottom: 0; width: 2px; height: 20px; border-radius: 1px 1px 0 0; box-shadow: inset 0 0 0 1px var(--blue); background: transparent; animation: eb-slot 0s var(--ease) backwards; }
+.eb-strip-row .eb-slot { height: 6px; }
+@keyframes eb-slot { from { opacity: 0; } }
+
+.eb-ruler { position: relative; display: block; width: 44px; height: 16px; border-bottom: 1px solid var(--separator); }
+.eb-ruler .eb-tick { height: 9px; background: var(--label-2); }
+
+/* digits of a block number: only a changed digit moves, up, 180 ms */
+.eb-ticker { display: inline-flex; overflow: hidden; vertical-align: bottom; white-space: pre; }
+.eb-digit { display: inline-block; animation: eb-digit .18s var(--ease); }
+@keyframes eb-digit { from { transform: translateY(.6em); opacity: 0; } }
+
+/* a network row that is being listened to */
+.eb-net[aria-checked="true"] { background: var(--highlight); }
+
+/* the status word of an operation changes in place (08 §4 B): out up 6 px in 160 ms, in from below in 200 ms */
+.eb-word { display: inline-flex; align-items: center; gap: 8px; animation: eb-word .2s var(--ease); }
+@keyframes eb-word { from { transform: translateY(6px); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .eb-digit, .eb-word, .eb-tick.eb-new, .eb-tick.eb-hit, .eb-slot { animation: none; }
+}

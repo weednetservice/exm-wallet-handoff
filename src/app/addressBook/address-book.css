@@ -1,0 +1,32 @@
+.wallet-addressbook-form input, .wallet-addressbook-form textarea { border: 1px solid var(--exm-control-line, var(--separator)); background: var(--grouped); }
+.wallet-addressbook-form input:focus-visible, .wallet-addressbook-form textarea:focus-visible { outline-color: var(--blue); }
+.wallet-addressbook-form fieldset button { border: 1px solid var(--exm-control-line, var(--separator)); }
+.wallet-addressbook-form fieldset button[aria-pressed="true"] { border-color: var(--blue); color: var(--blue); }
+.wallet-addressbook-form { padding-top: 12px; container-type: inline-size; }
+.wallet-addressbook-form label, .wallet-addressbook-form legend { color: var(--label); font-size: .875rem; line-height: 1.5; font-weight: 500; }
+.wallet-addressbook-form input, .wallet-addressbook-form textarea { width: 100%; min-width: 0; border-radius: var(--radius-group); font-size: 1rem; line-height: 1.5; }
+.wallet-addressbook-form textarea { font-size: .875rem; overflow-wrap: anywhere; }
+.wallet-addressbook-form fieldset button { min-width: 0; border-radius: var(--radius-btn); font-size: .875rem; line-height: 1.5; padding-block: 12px; overflow-wrap: anywhere; }
+.wallet-addressbook-content { display: flex; min-width: 0; flex-direction: column; gap: 20px; padding-block: 16px 8px; container-type: inline-size; }
+.wallet-addressbook-person { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: var(--radius-group); background: var(--blue-light); }
+.wallet-addressbook-person > div { min-width: 0; }
+.wallet-addressbook-person p { color: var(--label); font-size: 1.25rem; line-height: 1.35; font-weight: 600; overflow-wrap: anywhere; }
+.wallet-addressbook-person span { color: var(--label-2); font-size: .8125rem; line-height: 1.4; }
+.wallet-addressbook-ticket > .card { border-radius: var(--radius-group); }
+.wallet-addressbook-ticket .mono { font-size: .875rem; line-height: 1.65; }
+.wallet-addressbook-ticket .t-label2 { font-size: .875rem; }
+.wallet-addressbook-list > .card { padding: 0 12px; }
+.wallet-addressbook-row { display: flex; min-height: 70px; width: 100%; align-items: center; gap: 12px; padding: 10px 4px; border-radius: var(--radius-btn); text-align: start; }
+.wallet-addressbook-list .wallet-addressbook-row + .wallet-addressbook-row::before { inset-inline-start: 56px; inset-inline-end: 0; }
+.wallet-addressbook-row-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 3px; }
+.wallet-addressbook-row-copy > span:first-child { font-size: 1rem; line-height: 1.4; font-weight: 500; overflow-wrap: anywhere; }
+.wallet-addressbook-row-copy > .mono, .wallet-addressbook-row-copy > small { color: var(--label-2); font-size: .8125rem; line-height: 1.4; overflow-wrap: anywhere; }
+.wallet-addressbook-row:hover { background: var(--fill); }
+.wallet-addressbook-row:active { background: var(--fill-press); }
+@container (max-width: 18em) {
+  .wallet-addressbook-form fieldset > div { grid-template-columns: minmax(0, 1fr); }
+  .wallet-addressbook-person { flex-direction: column; align-items: flex-start; }
+  .wallet-addressbook-person > div { width: 100%; }
+}
+
+.wallet-addressbook-search { margin-bottom: 12px; }

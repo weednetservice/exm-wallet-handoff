@@ -1,0 +1,35 @@
+{
+  "balances": {
+    "ethereum": "2345000000000000000",
+    "base": "350000000000000000",
+    "solana": "14925000000",
+    "bitcoin": "1750000"
+  },
+  "tokens": [
+    { "network": "ethereum", "contract": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "symbol": "USDC", "name": "USD Coin", "decimals": 6, "amount": "2541480000" },
+    { "network": "ethereum", "contract": "0x6b175474e89094c44da98b954eedeac495271d0f", "symbol": "DAI", "name": "Dai", "decimals": 18, "amount": "83500000000000000000" },
+    { "network": "ethereum", "contract": "0xdac17f958d2ee523a2206206994597c13d831ec7", "symbol": "USDT", "name": "Tether", "decimals": 6, "amount": "125000000" },
+    { "network": "ethereum", "contract": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "symbol": "WETH", "name": "Wrapped Ether", "decimals": 18, "amount": "200000000000000000" },
+    { "network": "base", "contract": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "symbol": "USDC", "name": "USD Coin", "decimals": 6, "amount": "784560000" },
+    { "network": "solana", "contract": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "symbol": "USDC", "name": "USD Coin", "decimals": 6, "amount": "328130000" }
+  ],
+  "prices": {
+    "ETH": [3125.45, 3.46],
+    "BTC": [76159.20, -1.25],
+    "SOL": [141.32, 5.2],
+    "USDC": [1.0, 0.01],
+    "USDT": [1.0, 0.02],
+    "DAI": [1.0, -0.01],
+    "WETH": [3125.45, 3.46],
+    "TON": [2.16, -2.5],
+    "BNB": [627.30, 1.78],
+    "POL": [0.42, -0.7],
+    "AVAX": [27.4, 2.8],
+    "MON": [0.031, -4.21]
+  },
+  "portfolioNetworks": [
+    { "id": "ethereum", "name": "Ethereum", "chainId": 1, "symbol": "ETH", "decimals": 18, "family": "evm" },
+    { "id": "base", "name": "Base", "chainId": 8453, "symbol": "ETH", "decimals": 18, "family": "evm" },
+    { "id": "solana", "name": "Solana", "chainId": null, "symbol": "SOL", "decimals": 9, "family": "solana" }
+  ]
+}

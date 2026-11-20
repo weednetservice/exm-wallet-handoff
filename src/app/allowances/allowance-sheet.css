@@ -1,0 +1,32 @@
+.allowance-list { container-type: inline-size; }
+.allowance-identities { display: grid; gap: 10px; padding: 14px; border-inline-start: 2px solid var(--blue); border-radius: var(--radius-group); background: var(--blue-light); }
+.allowance-identities dt { color: var(--label-2); font-size: .8125rem; }
+.allowance-identities dd { margin-top: 2px; font-size: .8125rem; overflow-wrap: anywhere; }
+@media (min-width: 960px) {
+  .wallet-sheet.wallet-allowance-sheet { max-width: 560px; }
+}
+.allowance-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 16px;
+}
+.allowance-row-details { min-width: 0; overflow-wrap: anywhere; }
+.allowance-row-action {
+  min-height: 44px;
+  padding-inline: 6px;
+  color: var(--blue);
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.allowance-row-action:hover:not(:disabled) { text-decoration: underline; text-underline-offset: 3px; }
+
+@container (max-width: 19em) {
+  .allowance-row {
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: start;
+    padding-inline: 12px;
+  }
+  .allowance-row-action { grid-column: 2; justify-self: start; padding-inline: 0; }
+}

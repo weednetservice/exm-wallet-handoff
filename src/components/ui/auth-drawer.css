@@ -1,0 +1,123 @@
+/*
+ * Auth Drawer: component-specific CSS.
+ * Original author: sidiora-labs, https://21st.dev/@sidiora-labs/components/auth-drawer (MIT).
+ * Copied verbatim (rules and values) from the public 21st.dev preview bundle's compiled
+ * Tailwind CSS; only reformatted. These are the author's design tokens and utilities that the
+ * project's shared theme (src/index.css) does not define.
+ *
+ * `state-layer` was the first rule of the bundle's utilities layer, so every regular utility
+ * overrides it (e.g. `absolute` beats its `position: relative`); it lives in `components`
+ * here so regular utilities keep overriding it whichever stylesheet loads first.
+ */
+
+/*
+ * Vite hoists main.tsx's eager import.meta.glob of the demos above `import "./index.css"`, so this
+ * file can load before Tailwind's. Declaring Tailwind's layer order here keeps preflight (base)
+ * below the utilities whichever stylesheet comes first.
+ */
+@layer properties;
+@layer theme, base, components, utilities;
+
+@layer components {
+  .state-layer {
+    isolation: isolate;
+    position: relative;
+  }
+  .state-layer:before {
+    content: "";
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.15s var(--ease-dx);
+    background: currentColor;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  @media (hover: hover) {
+    .state-layer:hover:not([data-disabled]):not(:disabled):before {
+      opacity: var(--state-hover);
+    }
+  }
+  .state-layer:focus-visible:before {
+    opacity: var(--state-focus);
+  }
+  .state-layer:active:not([data-disabled]):not(:disabled):before,
+  .state-layer[data-popup-open]:before,
+  .state-layer[data-pressed]:before {
+    opacity: var(--state-press);
+  }
+}
+@layer utilities {
+  .bg-container {
+    background-color: var(--container);
+  }
+  .bg-container-high {
+    background-color: var(--container-high);
+  }
+  .bg-outline-variant {
+    background-color: var(--outline-variant);
+  }
+  .border-outline-variant {
+    border-color: var(--outline-variant);
+  }
+  .bg-success {
+    background-color: var(--success);
+  }
+  .focus-ring {
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--ring);
+    outline: none;
+  }
+  .shadow-float {
+    box-shadow: var(--shadow-float);
+  }
+  .animate-caret-blink {
+    animation: 1.25s ease-out infinite caret-blink;
+  }
+  .disabled\:bg-container-highest:disabled {
+    background-color: var(--container-highest);
+  }
+}
+:root {
+  --container: #f8f9fc;
+  --container-high: #eff2f7;
+  --container-highest: #e1e6ec;
+  --outline-variant: #2122260f;
+  --success: #008052;
+  --shadow-float:
+    0 1px 2px #1213170a, 0 8px 24px -6px #1213171f, 0 24px 56px -12px #1213171a;
+  --state-hover: 0.05;
+  --state-press: 0.09;
+  --state-focus: 0.12;
+  --ease-dx: cubic-bezier(0.2, 0, 0, 1);
+}
+.dark {
+  --container: #18191d;
+  --container-high: #212226;
+  --container-highest: #45474d;
+  --outline-variant: #e6eaf00f;
+  --success: #0ebc5f;
+  --shadow-float: 0 1px 2px #0000004d, 0 12px 32px -8px #00000080;
+  --state-hover: 0.06;
+  --state-press: 0.1;
+  --state-focus: 0.14;
+}
+@keyframes caret-blink {
+  0%,
+  70%,
+  to {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}

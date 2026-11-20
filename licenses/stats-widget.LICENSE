@@ -1,0 +1,11 @@
+Component: Stats Widget (stats-widget)
+Author: Ravi Katiyar (21st.dev @ravikatiyar162)
+Component page: https://21st.dev/@ravikatiyar162/components/stats-widget
+
+License: No public license on 21st.dev (empty).
+Used with the author's permission, reported by the project owner on 2026-11-14.
+Keep the written permission next to this file (e.g. stats-widget.permission.png).
+
+Source in src/components/ui/stats-widget.tsx was restored from the public
+21st.dev preview bundle: names, types and comments are ours, behaviour,
+numbers and CSS unchanged. Icons: lucide-react (ISC).

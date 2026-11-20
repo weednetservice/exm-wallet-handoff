@@ -1,0 +1,16 @@
+Prediction Market (order ticket), src/components/ui/prediction-market.tsx
+
+Author: larsen66 (21st.dev handle), component "be-ui-prediction-market"
+Original bundle: https://cdn.21st.dev/larsen66/be-ui-prediction-market/default/bundle.1782396827088.html
+
+The 21st.dev page is gone (404), no public license found.
+Used with the author's permission, reported by the project owner on 2026-11-14.
+Keep the written permission next to this file (e.g. prediction-market.permission.png).
+
+No license terms are stated here because none were published. The source in this
+project was restored from the public 21st.dev preview bundle: names, types and
+comments are ours, behaviour, numbers and CSS unchanged.
+
+Third-party code the component uses (installed as dependencies, under their own licenses):
+lucide-react (ISC; the "circle-check" icon node is copied from lucide-react 0.503.0, ISC),
+motion (MIT), clsx (MIT), tailwind-merge (MIT).
